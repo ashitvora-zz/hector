@@ -4,6 +4,9 @@
         <title>Hector Tests</title>
         <link rel="stylesheet" href="qunit.css"/>
         <script src="../hector.core.js"></script>
+        <script src="../hector.net.js"></script>
+        <script src="../hector.oo.js"></script>
+        <script src="../hector.util.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
         <script src="qunit.js"></script>
         
@@ -17,6 +20,47 @@
                 
                 test("Version", function(){
                     equals(hector.VERSION, "0.0.1", "Version test failed");
+                });
+                
+                
+                
+                // --------------------------------------------
+                // Hector.Util
+                // --------------------------------------------
+                module("Hector Util");
+                
+                test("Left Trim", function(){
+                    equals(hector.util.ltrim("   123   "), "123   ", "Result should be '123   '");
+                });
+                
+                
+                test("Right Trim", function(){
+                    equals(hector.util.rtrim("   123   "), "   123", "Result should be '   123'");
+                });
+                
+                
+                test("Size (for array)", function(){
+                    equals(hector.util.size(['a', 'b', 'c']), 3, "Size should be 3");
+                });
+                
+                
+                test("Size (for string)", function(){
+                    equals(hector.util.size("abc"), 3, "Size should be 3");
+                });
+                
+                
+                test("isNumber(12)", function(){
+                   equals(hector.util.isNumber(12), true, "isNumber does not accept 12 as a number.") 
+                });
+                
+                
+                test("isNumber('12')", function(){
+                   equals(hector.util.isNumber('12'), true, "isNumber does not accept '12' as a number.") 
+                });
+                
+                
+                test("isNumber('a')", function(){
+                   equals(hector.util.isNumber('a'), false, "isNumber accepts 'a' as a number.") 
                 });
                 
             });
